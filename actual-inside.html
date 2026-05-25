@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ehdude ~ Home Page</title>
+  <title>ehdude ~ Dashboard</title>
   <style>
     :root {
-      --bg: #000c1f; /* Slightly darker to match image depth */
+      --bg: #000c1f;
       --text: rgba(255, 255, 255, 0.85);
       --text-hover: #ffffff;
       --accent: #00d4ff;
     }
 
-    * { box-sizing: border-box; }
-
-    html, body {
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
       height: 100%;
       background: var(--bg);
       overflow: hidden;
@@ -33,85 +36,438 @@
       width: 100vw;
       height: 100vh;
       background:
-        linear-gradient(rgba(0,12,31,0.2), rgba(0,12,31,0.2)),
+        linear-gradient(rgba(0, 12, 31, 0.2), rgba(0, 12, 31, 0.2)),
         url("blue-waves.webp") center center / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 96px 24px 24px;
     }
 
-    a {
+    /* From Uiverse.io by simontheonlyone */
+    .button {
       position: absolute;
-      color: var(--text);
-      text-decoration: none;
-      font-size: clamp(16px, 1.8vw, 32px); /* Slightly smaller to fit pockets better */
-      letter-spacing: -0.02em;
-      line-height: 1;
-      white-space: nowrap;
-      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-      text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      z-index: 10;
+      top: 8px;
+      left: 8px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5.3em;
+      height: 5.3em;
+      border: none;
+      cursor: pointer;
+      border-radius: 0.4em;
+      background: transparent;
+      overflow: visible;
+      font-size: 12.8px;
     }
 
-    /* Pocket 1: Bottom Left (Under the first crest) */
-    .home {
-      left: 10%;
-      top: 72%;
-      transform: rotate(-6deg);
+    .container {
+      position: relative;
+      width: 3.5em;
+      height: 3.1em;
+      background: none;
+      overflow: hidden;
     }
 
-    /* Pocket 2: Top Middle (Above the first trough) */
-    .docs {
-      left: 36%;
-      top: 18%;
-      transform: rotate(4deg);
+    .folder {
+      content: "";
+      position: absolute;
     }
 
-    /* Pocket 3: Bottom Right-ish (Under the twist/second crest) */
-    .ping {
-      left: 63%;
-      top: 80%;
-      transform: rotate(-10deg);
+    .folder_one {
+      bottom: 0;
+      width: 100%;
+      height: 88%;
+      border-radius: 3px;
+      border-top: 2px solid rgb(206, 167, 39);
+      background: linear-gradient(-35deg, rgb(238, 194, 47) 5%, rgb(255, 223, 118));
     }
 
-    /* Pocket 4: Top Right (Above the tail curve) */
-    .guns {
-      left: 84%;
-      top: 25%;
-      transform: rotate(8deg);
+    .folder_two {
+      top: 5%;
+      width: 38%;
+      height: 19%;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px;
+      background-color: rgb(206, 167, 39);
+      box-shadow: 0 1px 5px -2px rgba(0, 0, 0, 0.5);
     }
 
-    /* Hover States - Following the "flow" of the pocket */
-    a:hover {
-      color: var(--text-hover);
-      text-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    .folder_two::before {
+      content: "";
+      position: absolute;
+      display: inline;
+      left: 88%;
+      width: 0;
+      height: 0;
+      border-left: 7px solid rgb(206, 167, 39);
+      border-top: 0.3em solid transparent;
+      border-bottom: 0.3em solid transparent;
     }
 
-    .home:hover { transform: rotate(-4deg) translateY(-5px) scale(1.05); }
-    .docs:hover { transform: rotate(2deg) translateY(5px) scale(1.05); }
-    .ping:hover { transform: rotate(-8deg) translateY(-5px) scale(1.05); }
-    .guns:hover { transform: rotate(6deg) translateY(5px) scale(1.05); opacity: 1; }
+    .folder_three {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      left: 0.5em;
+      bottom: 0;
+      width: 2.5em;
+      height: 0.9em;
+      border-radius: 4px 4px 0 0;
+      background: linear-gradient(-35deg, rgb(25, 102, 218), rgb(109, 165, 249));
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
+    }
 
-    /* Responsive Adjustments to keep links in the black voids */
-    @media (max-width: 1100px) {
-      .home { left: 8%; top: 75%; }
-      .docs { left: 32%; top: 15%; }
-      .ping { left: 60%; top: 82%; }
-      .guns { left: 80%; top: 22%; }
+    .folder_four {
+      left: 1em;
+      bottom: 0.3em;
+      width: 1.5em;
+      height: 0.18em;
+      border-radius: 1em;
+      background-color: rgb(20, 77, 163);
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .active_line {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 0.9em;
+      height: 0.4em;
+      background-color: #999;
+      border: none;
+      border-radius: 1em;
+      transition: all 0.15s linear;
+    }
+
+    .button:active .active_line,
+    .button:focus .active_line {
+      width: 2.3em;
+      background-color: rgb(41, 126, 255);
+    }
+
+    .button:focus .container {
+      animation: wow 1s forwards;
+    }
+
+    @keyframes wow {
+      20% { scale: 0.8; }
+      30% { scale: 1; transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      65% { transform: translateY(4px); }
+      80% { transform: translateY(0); }
+      100% { scale: 1; }
+    }
+
+    .debian-shortcut {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      left: auto;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 5.3em;
+      height: 5.3em;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 0.4em;
+      background: transparent;
+      overflow: visible;
+      font-size: 12.8px;
+    }
+
+    .debian-stroke {
+      width: 4.16em;
+      height: 4.16em;
+      object-fit: contain;
+      display: block;
+      pointer-events: none;
+      user-select: none;
+      transform: translateY(-0.02em);
+      filter:
+        drop-shadow(0 0 0.18em rgba(215, 10, 83, 0.45))
+        drop-shadow(0 0 0.4em rgba(215, 10, 83, 0.2));
+    }
+
+    .debian-shortcut:focus .debian-stroke,
+    .debian-shortcut:active .debian-stroke {
+      animation: debian-wow 1s forwards;
+    }
+
+    @keyframes debian-wow {
+      20% { scale: 0.8; }
+      30% { scale: 1; transform: translateY(-0.02em); }
+      50% { transform: translateY(-6px) rotate(-7deg); }
+      65% { transform: translateY(4px) rotate(5deg); }
+      80% { transform: translateY(-0.02em) rotate(0deg); }
+      100% { scale: 1; }
+    }
+
+    .debian-active-line {
+      position: absolute;
+      bottom: 0;
+      width: 0.9em;
+      height: 0.4em;
+      background-color: #999;
+      border: none;
+      border-radius: 1em;
+      transition: all 0.15s linear;
+    }
+
+    .debian-shortcut:active .debian-active-line,
+    .debian-shortcut:focus .debian-active-line {
+      width: 2.3em;
+      background-color: #d70a53;
+    }
+
+    .start-menu {
+      width: min(680px, calc(100vw - 48px));
+      height: min(640px, calc(100vh - 120px));
+      background: rgba(30, 30, 30, 0.75);
+      backdrop-filter: blur(40px);
+      -webkit-backdrop-filter: blur(40px);
+      border-radius: 18px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      color: white;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      z-index: 20;
+    }
+
+    .search-bar {
+      padding: 16px 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 14px 20px 14px 52px;
+      border: none;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.12);
+      color: white;
+      font-size: 15.5px;
+    }
+
+    .search-bar input::placeholder {
+      color: #bbbbbb;
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .content {
+      flex: 1;
+      padding: 24px 28px;
+      overflow-y: auto;
+    }
+
+    .pinned-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      font-size: 14.5px;
+      color: #e0e0e0;
+    }
+
+    .show-all {
+      color: #0078d4;
+      cursor: pointer;
+    }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 22px 16px;
+    }
+
+    .app-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 6px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .app-item:hover,
+    .app-item:focus-within {
+      background: rgba(0, 120, 215, 0.3);
+    }
+
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .app-name {
+      font-size: 13px;
+      text-align: center;
+      line-height: 1.3;
+      color: #f0f0f0;
+    }
+
+    .footer {
+      padding: 14px 24px;
+      background: rgba(20, 20, 20, 0.85);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .user {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      padding: 6px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .user:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      background: #938a86;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .power-btn {
+      width: 44px;
+      height: 44px;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .power-btn:hover {
+      background: rgb(244,208,198,0.1);
+      color: #9c6454;
     }
 
     @media (max-width: 768px) {
-      a { font-size: 18px; }
-      .home { left: 5%; top: 68%; }
-      .docs { left: 25%; top: 12%; }
-      .ping { left: 55%; top: 85%; }
-      .guns { left: 75%; top: 18%; }
+      .stage {
+        padding: 88px 14px 14px;
+      }
+
+      .start-menu {
+        width: calc(100vw - 28px);
+        height: calc(100vh - 108px);
+      }
+
+      .apps-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px 12px;
+      }
+
+      .content {
+        padding: 20px 18px;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="stage" aria-label="Minimal wave navigation">
-    <a class="home" href="music-emo-boi.webp">placeholder</a>
-    <a class="docs" href="https://cockroachjantaparty.org/">🪳CJP - hell yeahhh🪳</a>
-    <a class="ping" href="https://ping.ehdude.com">ping</a>
-    <a class="guns" href="https://guns.lol/ehdude">guns.lol</a>
+  <main class="stage" aria-label="Dashboard navigation">
+    <button class="button" type="button" aria-label="File Explorer">
+      <div class="container">
+        <div class="folder folder_one"></div>
+        <div class="folder folder_two"></div>
+        <div class="folder folder_three"></div>
+        <div class="folder folder_four"></div>
+      </div>
+      <div class="active_line"></div>
+    </button>
+
+    <div class="start-menu" aria-label="Floating start menu dashboard">
+      <div class="search-bar">
+        <input type="text" placeholder="Search for wot? Nothing's here. I am a lazy dude juggling futile interests" />
+      </div>
+
+      <div class="content">
+        <div class="pinned-header">
+          <strong>Pinned</strong>
+          <span class="show-all">Show all apps →</span>
+        </div>
+
+        <div class="apps-grid" id="appsGrid"></div>
+      </div>
+
+      <div class="footer">
+        <div class="user">
+          <div class="user-avatar">🪳</div>
+          <div>
+            <strong>eh dude</strong><br />
+            <small style="color:#bbb;">guns.lol/ehdude</small>
+          </div>
+        </div>
+        <a style="text-decoration: none; color: inherit;" href="https://ping.ehdude.com"><div class="power-btn" aria-label="Power">🎔</div></a>
+      </div>
+    </div>
+
+    <button class="debian-shortcut" type="button" aria-label="Debian">
+      <img class="debian-stroke" src="debian-stroke.png" alt="" />
+      <div class="debian-active-line"></div>
+    </button>
   </main>
+
+  <script>
+    const apps = [
+      { name: "add to dictionary", icon: "🔏", color: "#2b579a" }
+    ];
+
+    const grid = document.getElementById("appsGrid");
+
+    apps.forEach((app) => {
+      const item = document.createElement("div");
+      item.className = "app-item";
+
+      const icon = document.createElement("div");
+      icon.className = "app-icon";
+      icon.style.background = app.color;
+      icon.textContent = app.icon;
+
+      const name = document.createElement("div");
+      name.className = "app-name";
+      name.textContent = app.name;
+
+      item.append(icon, name);
+      grid.appendChild(item);
+    });
+  </script>
 </body>
 </html>
