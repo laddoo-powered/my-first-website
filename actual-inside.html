@@ -445,29 +445,36 @@
     </button>
   </main>
 
-  <script>
-    const apps = [
-      { name: "add to dictionary", icon: "🔏", color: "#2b579a" }
-    ];
+<script>
+  const apps = [
+    // 1. Added the URL property here
+    { name: "add to dictionary", icon: "🔏", color: "#2b579a", url: "https://add-to-dictionary-sucktoes.vercel.app" }
+  ];
 
-    const grid = document.getElementById("appsGrid");
+  const grid = document.getElementById("appsGrid");
 
-    apps.forEach((app) => {
-      const item = document.createElement("div");
-      item.className = "app-item";
+  apps.forEach((app) => {
+    const item = document.createElement("div");
+    item.className = "app-item";
+    item.style.cursor = "pointer"; // Makes the mouse cursor look clickable
 
-      const icon = document.createElement("div");
-      icon.className = "app-icon";
-      icon.style.background = app.color;
-      icon.textContent = app.icon;
-
-      const name = document.createElement("div");
-      name.className = "app-name";
-      name.textContent = app.name;
-
-      item.append(icon, name);
-      grid.appendChild(item);
+    // 2. Add a click event listener
+    item.addEventListener("click", () => {
+      window.open(app.url, "_blank"); // Opens external link in a new tab
     });
-  </script>
+
+    const icon = document.createElement("div");
+    icon.className = "app-icon";
+    icon.style.background = app.color;
+    icon.textContent = app.icon;
+
+    const name = document.createElement("div");
+    name.className = "app-name";
+    name.textContent = app.name;
+
+    item.append(icon, name);
+    grid.appendChild(item);
+  });
+</script>
 </body>
 </html>
