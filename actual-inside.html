@@ -459,10 +459,11 @@
     item.className = "app-item";
     item.style.cursor = "pointer"; // Makes the mouse cursor look clickable
 
-    // 2. Add a click event listener
-    item.addEventListener("click", () => {
-      window.open(app.url); // Opens external link in a new tab
-    });
+// 2. Add a click event listener
+item.addEventListener("click", () => {
+  // This changes the current page to the new URL
+  window.location.href = app.url; 
+});
 
     const icon = document.createElement("div");
     icon.className = "app-icon";
