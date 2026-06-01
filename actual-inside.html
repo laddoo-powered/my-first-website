@@ -23,8 +23,7 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       height: 100%;
       background: var(--bg);
       overflow: hidden;
@@ -39,18 +38,39 @@
         linear-gradient(rgba(0, 12, 31, 0.2), rgba(0, 12, 31, 0.2)),
         url("blue-waves.webp") center center / cover no-repeat;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      padding: 96px 24px 24px;
+      padding: 90px 24px 24px;
     }
 
-    /* From Uiverse.io by simontheonlyone */
-    .button {
-      position: absolute;
+    /* ══════════════════════════════════════════════════
+       TOP BAR — all 3 icons in a centered row
+    ══════════════════════════════════════════════════ */
+    .top-bar {
+      position: fixed;
       top: 8px;
-      left: 8px;
+      left: 0;
+      right: 0;
       z-index: 1000;
       display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      pointer-events: none; /* let clicks pass through the bar itself */
+    }
+
+    /* every direct child of top-bar gets pointer-events back */
+    .top-bar > * {
+      pointer-events: auto;
+    }
+
+    /* ══════════════════════════════════════════════════
+       SHARED DOCK BUTTON BASE
+    ══════════════════════════════════════════════════ */
+    .dock-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 5.3em;
@@ -61,8 +81,14 @@
       background: transparent;
       overflow: visible;
       font-size: 12.8px;
+      padding: 0;
+      flex-shrink: 0;
     }
 
+    /* ══════════════════════════════════════════════════
+       FOLDER / FILE-EXPLORER BUTTON
+       (From Uiverse.io by simontheonlyone, MIT)
+    ══════════════════════════════════════════════════ */
     .container {
       position: relative;
       width: 3.5em;
@@ -131,7 +157,7 @@
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
-    .active_line {
+    .folder-btn .active_line {
       content: "";
       position: absolute;
       bottom: 0;
@@ -143,13 +169,13 @@
       transition: all 0.15s linear;
     }
 
-    .button:active .active_line,
-    .button:focus .active_line {
+    .folder-btn:active .active_line,
+    .folder-btn:focus .active_line {
       width: 2.3em;
       background-color: rgb(41, 126, 255);
     }
 
-    .button:focus .container {
+    .folder-btn:focus .container {
       animation: wow 1s forwards;
     }
 
@@ -162,12 +188,81 @@
       100% { scale: 1; }
     }
 
-    .debian-shortcut {
+    /* ══════════════════════════════════════════════════
+       START MENU BUTTON
+       (From Uiverse.io by Enashpinal, MIT)
+    ══════════════════════════════════════════════════ */
+    .win-logo {
+      position: relative;
+      width: 3.1em;
+      height: 3.1em;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 0.2em;
+    }
+
+    .window {
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .window_one {
+      background-color: rgb(100, 175, 230);
+      border-top-left-radius: 0.2em;
+    }
+
+    .window_two {
+      background: linear-gradient(135deg, rgb(100, 175, 230), rgb(0, 120, 212));
+      border-top-right-radius: 0.2em;
+    }
+
+    .window_three {
+      background: linear-gradient(135deg, rgb(100, 175, 230), rgb(0, 120, 212));
+      border-bottom-left-radius: 0.2em;
+    }
+
+    .window_four {
+      background-color: rgb(0, 120, 212);
+      border-bottom-right-radius: 0.2em;
+    }
+
+    .start-btn .active_line {
+      content: "";
       position: absolute;
-      top: 8px;
-      right: 8px;
-      left: auto;
-      z-index: 1000;
+      bottom: 0;
+      width: 0.9em;
+      height: 0.4em;
+      background-color: #999;
+      border: none;
+      border-radius: 1em;
+      transition: all 0.15s linear;
+    }
+
+    .start-btn:active .active_line,
+    .start-btn:focus .active_line,
+    .start-btn.menu-open .active_line {
+      width: 2.3em;
+      background-color: #0078d4;
+    }
+
+    .start-btn:focus .win-logo {
+      animation: win-wow 1s forwards;
+    }
+
+    @keyframes win-wow {
+      20% { scale: 0.8; }
+      30% { scale: 1; transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      65% { transform: translateY(4px); }
+      80% { transform: translateY(0); }
+      100% { scale: 1; }
+    }
+
+    /* ══════════════════════════════════════════════════
+       DEBIAN BUTTON
+    ══════════════════════════════════════════════════ */
+    .debian-shortcut {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -180,6 +275,7 @@
       background: transparent;
       overflow: visible;
       font-size: 12.8px;
+      flex-shrink: 0;
     }
 
     .debian-stroke {
@@ -226,53 +322,115 @@
       background-color: #d70a53;
     }
 
+    /* ══════════════════════════════════════════════════
+       START MENU POPUP
+    ══════════════════════════════════════════════════ */
     .start-menu {
       width: min(680px, calc(100vw - 48px));
-      height: min(640px, calc(100vh - 120px));
-      background: rgba(30, 30, 30, 0.75);
-      backdrop-filter: blur(40px);
-      -webkit-backdrop-filter: blur(40px);
-      border-radius: 18px;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.12);
+      height: min(820px, calc(100vh - 104px));
+      background: #2b2b2b;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255,255,255,0.06);
+      border: none;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       color: white;
       font-family: "Segoe UI", system-ui, sans-serif;
       z-index: 20;
+
+      transform-origin: top center;
+      transition:
+        opacity 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.22s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 0s;
+      opacity: 1;
+      transform: scaleY(1) translateY(0);
+      visibility: visible;
     }
 
+    .start-menu.hidden {
+      opacity: 0;
+      transform: scaleY(0.96) translateY(-8px);
+      visibility: hidden;
+      transition:
+        opacity 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.18s cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 0s linear 0.18s;
+      pointer-events: none;
+    }
+
+    /* ─── Search bar ──────────────────────────────────────────────── */
     .search-bar {
-      padding: 16px 24px;
-      background: rgba(255, 255, 255, 0.08);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 24px;
+      background: #2b2b2b;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+    }
+
+    .search-bar-inner {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #0067c0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
+    .search-icon svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: white;
+      stroke-width: 2.2;
+      stroke-linecap: round;
     }
 
     .search-bar input {
       width: 100%;
-      padding: 14px 20px 14px 52px;
-      border: none;
+      padding: 11px 20px 11px 48px;
+      border: 1px solid rgba(255,255,255,0.08);
       border-radius: 30px;
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.07);
       color: white;
-      font-size: 15.5px;
+      font-size: 14.5px;
+      font-family: "Segoe UI", system-ui, sans-serif;
+      transition: background 0.15s, border-color 0.15s;
     }
 
-    .search-bar input::placeholder {
-      color: #bbbbbb;
-    }
+    .search-bar input::placeholder { color: rgba(255,255,255,0.45); }
 
     .search-bar input:focus {
       outline: none;
-      background: rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.11);
+      border-color: rgba(255,255,255,0.18);
     }
 
+    /* ─── Content ─────────────────────────────────────────────────── */
     .content {
       flex: 1;
       padding: 24px 28px;
       overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.15) transparent;
     }
+
+    .content::-webkit-scrollbar { width: 4px; }
+    .content::-webkit-scrollbar-track { background: transparent; }
+    .content::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.18); border-radius: 4px; }
+    .content::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.28); }
 
     .pinned-header {
       display: flex;
@@ -283,10 +441,7 @@
       color: #e0e0e0;
     }
 
-    .show-all {
-      color: #0078d4;
-      cursor: pointer;
-    }
+    .show-all { color: #0078d4; cursor: pointer; }
 
     .apps-grid {
       display: grid;
@@ -328,10 +483,11 @@
       color: #f0f0f0;
     }
 
+    /* ─── Footer ──────────────────────────────────────────────────── */
     .footer {
       padding: 14px 24px;
-      background: rgba(20, 20, 20, 0.85);
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: #222222;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       gap: 16px;
@@ -347,9 +503,7 @@
       cursor: pointer;
     }
 
-    .user:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
+    .user:hover { background: rgba(255, 255, 255, 0.1); }
 
     .user-avatar {
       width: 40px;
@@ -376,18 +530,25 @@
     }
 
     .power-btn:hover {
-      background: rgb(244,208,198,0.1);
+      background: rgba(244,208,198,0.1);
       color: #9c6454;
     }
 
+    /* ══════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════ */
     @media (max-width: 768px) {
       .stage {
-        padding: 88px 14px 14px;
+        padding: 90px 14px 14px;
+      }
+
+      .top-bar {
+        gap: 10px;
       }
 
       .start-menu {
         width: calc(100vw - 28px);
-        height: calc(100vh - 108px);
+        height: calc(100vh - 90px);
       }
 
       .apps-grid {
@@ -399,23 +560,68 @@
         padding: 20px 18px;
       }
     }
+
+    /* very small screens — shrink icons slightly */
+    @media (max-width: 380px) {
+      .dock-btn,
+      .debian-shortcut {
+        font-size: 10.5px;
+      }
+
+      .top-bar {
+        gap: 6px;
+      }
+    }
   </style>
 </head>
 <body>
   <main class="stage" aria-label="Dashboard navigation">
-    <button class="button" type="button" aria-label="File Explorer">
-      <div class="container">
-        <div class="folder folder_one"></div>
-        <div class="folder folder_two"></div>
-        <div class="folder folder_three"></div>
-        <div class="folder folder_four"></div>
-      </div>
-      <div class="active_line"></div>
-    </button>
 
-    <div class="start-menu" aria-label="Floating start menu dashboard">
+    <!-- ── TOP BAR: all 3 icons centered, evenly spaced ────────────── -->
+    <div class="top-bar">
+
+      <!-- Folder / File Explorer (From Uiverse.io by simontheonlyone, MIT) -->
+      <button class="dock-btn folder-btn" type="button" aria-label="File Explorer">
+        <div class="container">
+          <div class="folder folder_one"></div>
+          <div class="folder folder_two"></div>
+          <div class="folder folder_three"></div>
+          <div class="folder folder_four"></div>
+        </div>
+        <div class="active_line"></div>
+      </button>
+
+      <!-- Start Menu toggle (From Uiverse.io by Enashpinal, MIT) -->
+      <button class="dock-btn start-btn" type="button" aria-label="Start Menu" id="startBtn" aria-expanded="false">
+        <div class="win-logo" aria-hidden="true">
+          <div class="window window_one"></div>
+          <div class="window window_two"></div>
+          <div class="window window_three"></div>
+          <div class="window window_four"></div>
+        </div>
+        <div class="active_line"></div>
+      </button>
+
+      <!-- Debian -->
+      <button class="debian-shortcut" type="button" aria-label="Debian">
+        <img class="debian-stroke" src="debian-stroke.png" alt="" />
+        <div class="debian-active-line"></div>
+      </button>
+
+    </div>
+
+    <!-- ── POPUP (hidden by default, toggled by start-btn) ─────────── -->
+    <div class="start-menu hidden" id="startMenu" aria-label="Floating start menu dashboard">
       <div class="search-bar">
-        <input type="text" placeholder="Search for wot? Nothing's here. I am a lazy dude juggling futile interests" />
+        <div class="search-bar-inner">
+          <div class="search-icon">
+            <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="5.5" cy="5.5" r="4"/>
+              <line x1="8.5" y1="8.5" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <input type="text" placeholder="Search for wot?" />
+        </div>
       </div>
 
       <div class="content">
@@ -423,7 +629,6 @@
           <strong>Pinned</strong>
           <span class="show-all">Show all apps →</span>
         </div>
-
         <div class="apps-grid" id="appsGrid"></div>
       </div>
 
@@ -435,48 +640,67 @@
             <small style="color:#bbb;">guns.lol/ehdude</small>
           </div>
         </div>
-        <a style="text-decoration: none; color: inherit;" href="https://ping.ehdude.com"><div class="power-btn" aria-label="Power">🎔</div></a>
+        <a style="text-decoration: none; color: inherit;" href="https://ping.ehdude.com">
+          <div class="power-btn" aria-label="Power">🎔</div>
+        </a>
       </div>
     </div>
 
-    <button class="debian-shortcut" type="button" aria-label="Debian">
-      <img class="debian-stroke" src="debian-stroke.png" alt="" />
-      <div class="debian-active-line"></div>
-    </button>
   </main>
 
-<script>
-  const apps = [
-    // 1. Added the URL property here
-    { name: "add to dictionary", icon: "🔏", color: "#2b579a", url: "https://add-to-dictionary-sucktoes.vercel.app" },
-    { name: "hotch potch", icon: "📜", color: "#217346", url: "https://mr-hotch-potch.vercel.app" }
-  ];
+  <script>
+    /* ── Apps grid ──────────────────────────────────────────────────── */
+    const apps = [
+      { name: "hotch potch", icon: "📜", color: "#2b579a", url: "https://mr-hotch-potch.vercel.app" },
+      { name: "add to dictionary",       icon: "🔏", color: "#217346", url: "https://add-to-dictionary-sucktoes.vercel.app"  }
+    ];
 
-  const grid = document.getElementById("appsGrid");
+    const grid = document.getElementById("appsGrid");
 
-  apps.forEach((app) => {
-    const item = document.createElement("div");
-    item.className = "app-item";
-    item.style.cursor = "pointer"; // Makes the mouse cursor look clickable
+    apps.forEach((app) => {
+      const item = document.createElement("div");
+      item.className = "app-item";
+      item.style.cursor = "pointer";
+      item.addEventListener("click", () => { window.location.href = app.url; });
 
-// 2. Add a click event listener
-item.addEventListener("click", () => {
-  // This changes the current page to the new URL
-  window.location.href = app.url; 
-});
+      const icon = document.createElement("div");
+      icon.className = "app-icon";
+      icon.style.background = app.color;
+      icon.textContent = app.icon;
 
-    const icon = document.createElement("div");
-    icon.className = "app-icon";
-    icon.style.background = app.color;
-    icon.textContent = app.icon;
+      const name = document.createElement("div");
+      name.className = "app-name";
+      name.textContent = app.name;
 
-    const name = document.createElement("div");
-    name.className = "app-name";
-    name.textContent = app.name;
+      item.append(icon, name);
+      grid.appendChild(item);
+    });
 
-    item.append(icon, name);
-    grid.appendChild(item);
-  });
-</script>
+    /* ── Start menu toggle ──────────────────────────────────────────── */
+    const startBtn  = document.getElementById("startBtn");
+    const startMenu = document.getElementById("startMenu");
+
+    startBtn.addEventListener("click", () => {
+      const isHidden = startMenu.classList.toggle("hidden");
+      startBtn.classList.toggle("menu-open", !isHidden);
+      startBtn.setAttribute("aria-expanded", String(!isHidden));
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!startMenu.contains(e.target) && !startBtn.contains(e.target)) {
+        startMenu.classList.add("hidden");
+        startBtn.classList.remove("menu-open");
+        startBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        startMenu.classList.add("hidden");
+        startBtn.classList.remove("menu-open");
+        startBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+  </script>
 </body>
 </html>
