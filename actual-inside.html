@@ -15,6 +15,8 @@
       --text: rgba(255, 255, 255, 0.85);
       --text-hover: #ffffff;
       --accent: #00d4ff;
+      --dock-icon-size: 4.16em;
+      --home-icon-size: 3.72em;
     }
 
     * {
@@ -107,8 +109,8 @@
 
     .dock-icon,
     .debian-stroke {
-      width: 4.16em;
-      height: 4.16em;
+      width: var(--dock-icon-size);
+      height: var(--dock-icon-size);
       display: block;
       object-fit: contain;
       pointer-events: none;
@@ -123,6 +125,8 @@
     }
 
     .home-icon {
+      width: var(--home-icon-size);
+      height: var(--home-icon-size);
       filter:
         drop-shadow(0 0 0.18em rgba(16, 122, 176, 0.45))
         drop-shadow(0 0 0.4em rgba(16, 122, 176, 0.2));
