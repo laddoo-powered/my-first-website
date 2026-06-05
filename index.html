@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -12,22 +12,9 @@
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" sizes="180x180" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <script>
-    (() => {
-      try {
-        const theme = localStorage.getItem("dashboard-theme");
-        if (theme === "light" || theme === "dark") {
-          document.documentElement.dataset.theme = theme;
-        }
-      } catch {}
-    })();
-  </script>
-
   <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
-  <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">☾</button>
-
   <main class="stage" aria-label="Dashboard navigation">
     <nav class="dock" aria-label="Main shortcuts">
       <button class="dock-button" type="button" aria-label="File Explorer">

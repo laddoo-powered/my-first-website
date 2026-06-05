@@ -1,5 +1,3 @@
-const root = document.documentElement;
-const themeToggle = document.querySelector("#themeToggle");
 const startButton = document.querySelector("#startBtn");
 const startMenu = document.querySelector("#startMenu");
 const appsGrid = document.querySelector("#appsGrid");
@@ -23,22 +21,6 @@ const apps = [
     url: "https://add-to-dictionary-sucktoes.vercel.app"
   }
 ];
-
-function syncThemeToggle() {
-  const isDark = root.dataset.theme !== "light";
-  themeToggle.textContent = isDark ? "☾" : "☼";
-  themeToggle.setAttribute("aria-label", `Switch to ${isDark ? "light" : "dark"} theme`);
-}
-
-function setTheme(theme) {
-  root.dataset.theme = theme;
-
-  try {
-    localStorage.setItem("dashboard-theme", theme);
-  } catch {}
-
-  syncThemeToggle();
-}
 
 function createAppButton(app) {
   const button = document.createElement("button");
@@ -79,10 +61,6 @@ function setScrobbleTicker(isLive) {
   document.body.classList.toggle("has-live-scrobble", Boolean(isLive));
 }
 
-themeToggle?.addEventListener("click", () => {
-  setTheme(root.dataset.theme === "dark" ? "light" : "dark");
-});
-
 startButton?.addEventListener("click", (event) => {
   event.stopPropagation();
   setStartMenu(startMenu.classList.contains("hidden"));
@@ -109,5 +87,4 @@ if (scrobbleFrame) {
   scrobbleFrame.src = LASTFM_WIDGET_URL;
 }
 
-syncThemeToggle();
 renderApps();
