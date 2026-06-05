@@ -6,33 +6,79 @@
       "h": 768
     },
     "startMenu": {
-      "top": 82.31999969482422,
-      "bottom": 710.1599655151367,
+      "top": 88.5038070678711,
+      "bottom": 737.5741195678711,
       "left": 343,
       "right": 1023,
-      "height": 627.8399658203125,
+      "height": 649.0703125,
       "width": 680
     },
     "footer": {
-      "top": 620.8800048828125,
-      "bottom": 710.1599731445312,
-      "height": 89.27996826171875
+      "top": 645.2750854492188,
+      "bottom": 737.5740966796875,
+      "height": 92.29901123046875
     },
     "topbar": {
       "top": 8,
-      "bottom": 75.828125
+      "bottom": 75.828125,
+      "left": 0,
+      "right": 1366,
+      "width": 1366
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.96875,
+      "top": 9,
+      "bottom": 21,
+      "width": 12.96875,
+      "height": 12
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 523.34375,
+        "right": 591.171875,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 607.171875,
+        "right": 675,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 691,
+        "right": 758.828125,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 774.828125,
+        "right": 842.65625,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 1366,
     "bodyScrollH": 768,
     "panel": {
-      "top": 82,
-      "bottom": 709.2000122070312,
-      "left": 962,
+      "top": 89.31999969482422,
+      "bottom": 728.2319869995117,
+      "left": 954.6799926757812,
       "right": 1354,
-      "height": 627.2000122070312,
-      "width": 392
+      "height": 638.9119873046875,
+      "width": 399.32000732421875
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -44,33 +90,79 @@
       "h": 1024
     },
     "startMenu": {
-      "top": 78.31999969482422,
-      "bottom": 967.2799606323242,
+      "top": 83.72086334228516,
+      "bottom": 999.0453872680664,
       "left": 14,
       "right": 754,
-      "height": 888.9599609375,
+      "height": 915.3245239257812,
       "width": 740
     },
     "footer": {
-      "top": 891.4400024414062,
-      "bottom": 967.2799682617188,
-      "height": 75.8399658203125
+      "top": 920.9561767578125,
+      "bottom": 999.04541015625,
+      "height": 78.0892333984375
     },
     "topbar": {
       "top": 8,
-      "bottom": 75.828125
+      "bottom": 75.828125,
+      "left": 0,
+      "right": 768,
+      "width": 768
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.96875,
+      "top": 9,
+      "bottom": 21,
+      "width": 12.96875,
+      "height": 12
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 233.34375,
+        "right": 301.171875,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 311.171875,
+        "right": 379,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 389,
+        "right": 456.828125,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      },
+      {
+        "left": 466.828125,
+        "right": 534.65625,
+        "top": 8,
+        "bottom": 75.828125,
+        "width": 67.828125,
+        "height": 67.828125
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 768,
     "bodyScrollH": 1024,
     "panel": {
-      "top": 78,
-      "bottom": 979.6000366210938,
-      "left": 26.8800048828125,
+      "top": 84.81897735595703,
+      "bottom": 1002.1026077270508,
+      "left": 14.19671630859375,
       "right": 756,
-      "height": 901.6000366210938,
-      "width": 729.1199951171875
+      "height": 917.2836303710938,
+      "width": 741.8032836914062
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -82,33 +174,79 @@
       "h": 932
     },
     "startMenu": {
-      "top": 70.31999969482422,
-      "bottom": 880.5599899291992,
+      "top": 76.50056457519531,
+      "bottom": 914.1247711181641,
       "left": 10,
       "right": 420,
-      "height": 810.239990234375,
+      "height": 837.6242065429688,
       "width": 410
     },
     "footer": {
-      "top": 804.719970703125,
-      "bottom": 880.5599975585938,
-      "height": 75.84002685546875
+      "top": 835.7215576171875,
+      "bottom": 914.124755859375,
+      "height": 78.4031982421875
     },
     "topbar": {
       "top": 8,
-      "bottom": 67.359375
+      "bottom": 67.359375,
+      "left": 0,
+      "right": 430,
+      "width": 430
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.96875,
+      "top": 9,
+      "bottom": 21,
+      "width": 12.96875,
+      "height": 12
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 81.28125,
+        "right": 140.640625,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 150.640625,
+        "right": 210,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 220,
+        "right": 279.359375,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 289.359375,
+        "right": 348.71875,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 430,
     "bodyScrollH": 932,
     "panel": {
-      "top": 72,
-      "bottom": 891.280029296875,
-      "left": 20.1199951171875,
+      "top": 79.32037353515625,
+      "bottom": 913.8999633789062,
+      "left": 12.6898193359375,
       "right": 418,
-      "height": 819.280029296875,
-      "width": 397.8800048828125
+      "height": 834.57958984375,
+      "width": 405.3101806640625
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -120,33 +258,79 @@
       "h": 844
     },
     "startMenu": {
-      "top": 70.31999969482422,
-      "bottom": 796.0800094604492,
+      "top": 75.72024536132812,
+      "bottom": 823.0023498535156,
       "left": 10,
       "right": 380,
-      "height": 725.760009765625,
+      "height": 747.2821044921875,
       "width": 370
     },
     "footer": {
-      "top": 720.239990234375,
-      "bottom": 796.0800170898438,
-      "height": 75.84002685546875
+      "top": 744.913330078125,
+      "bottom": 823.0023193359375,
+      "height": 78.0889892578125
     },
     "topbar": {
       "top": 8,
-      "bottom": 67.359375
+      "bottom": 67.359375,
+      "left": 0,
+      "right": 390,
+      "width": 390
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.96875,
+      "top": 9,
+      "bottom": 21,
+      "width": 12.96875,
+      "height": 12
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 61.28125,
+        "right": 120.640625,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 130.640625,
+        "right": 190,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 200,
+        "right": 259.359375,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      },
+      {
+        "left": 269.359375,
+        "right": 328.71875,
+        "top": 8,
+        "bottom": 67.359375,
+        "width": 59.359375,
+        "height": 59.359375
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 390,
     "bodyScrollH": 844,
     "panel": {
-      "top": 72,
-      "bottom": 805.0400390625,
-      "left": 19.32000732421875,
+      "top": 79.32029724121094,
+      "bottom": 826.0492401123047,
+      "left": 12.621917724609375,
       "right": 378,
-      "height": 733.0400390625,
-      "width": 358.67999267578125
+      "height": 746.7289428710938,
+      "width": 365.3780822753906
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -158,33 +342,79 @@
       "h": 740
     },
     "startMenu": {
-      "top": 64.31999969482422,
-      "bottom": 695.9999923706055,
+      "top": 70.50232696533203,
+      "bottom": 723.5375442504883,
       "left": 10,
       "right": 350,
-      "height": 631.6799926757812,
+      "height": 653.0352172851562,
       "width": 340
     },
     "footer": {
-      "top": 624,
-      "bottom": 696,
-      "height": 72
+      "top": 649.1033935546875,
+      "bottom": 723.5375366210938,
+      "height": 74.43414306640625
     },
     "topbar": {
       "top": 8,
-      "bottom": 61
+      "bottom": 61,
+      "left": 0,
+      "right": 360,
+      "width": 360
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.078125,
+      "top": 9,
+      "bottom": 20,
+      "width": 12.078125,
+      "height": 11
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 59,
+        "right": 112,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 122,
+        "right": 175,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 185,
+        "right": 238,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 248,
+        "right": 301,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 360,
     "bodyScrollH": 740,
     "panel": {
-      "top": 72,
-      "bottom": 703.1199951171875,
-      "left": 18.720001220703125,
+      "top": 78.81800842285156,
+      "bottom": 720.9149932861328,
+      "left": 12.99285888671875,
       "right": 348,
-      "height": 631.1199951171875,
-      "width": 329.2799987792969
+      "height": 642.0969848632812,
+      "width": 335.00714111328125
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -196,33 +426,79 @@
       "h": 568
     },
     "startMenu": {
-      "top": 62.31999969482422,
-      "bottom": 532.7199630737305,
+      "top": 68.50177764892578,
+      "bottom": 554.8032302856445,
       "left": 10,
       "right": 310,
-      "height": 470.39996337890625,
+      "height": 486.30145263671875,
       "width": 300
     },
     "footer": {
-      "top": 462.6399841308594,
-      "bottom": 532.719970703125,
-      "height": 70.07998657226562
+      "top": 482.3542175292969,
+      "bottom": 554.80322265625,
+      "height": 72.44900512695312
     },
     "topbar": {
       "top": 8,
-      "bottom": 61
+      "bottom": 61,
+      "left": 0,
+      "right": 320,
+      "width": 320
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.078125,
+      "top": 9,
+      "bottom": 20,
+      "width": 12.078125,
+      "height": 11
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 39,
+        "right": 92,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 102,
+        "right": 155,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 165,
+        "right": 218,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 228,
+        "right": 281,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 320,
     "bodyScrollH": 568,
     "panel": {
-      "top": 64,
-      "bottom": 538.3200073242188,
-      "left": 17.91998291015625,
+      "top": 71.32113647460938,
+      "bottom": 554.499755859375,
+      "left": 12.502349853515625,
       "right": 308,
-      "height": 474.32000732421875,
-      "width": 290.08001708984375
+      "height": 483.1786193847656,
+      "width": 295.4976501464844
     },
     "panelVisible": true,
     "panelBelowTopbar": true
@@ -234,33 +510,79 @@
       "h": 520
     },
     "startMenu": {
-      "top": 62.31999969482422,
-      "bottom": 486.63997650146484,
+      "top": 68.5028305053711,
+      "bottom": 507.16893768310547,
       "left": 10,
       "right": 310,
-      "height": 424.3199768066406,
+      "height": 438.6661071777344,
       "width": 300
     },
     "footer": {
-      "top": 416.55999755859375,
-      "bottom": 486.6399841308594,
-      "height": 70.07998657226562
+      "top": 434.7195739746094,
+      "bottom": 507.1689453125,
+      "height": 72.44937133789062
     },
     "topbar": {
       "top": 8,
-      "bottom": 61
+      "bottom": 61,
+      "left": 0,
+      "right": 320,
+      "width": 320
     },
+    "themeToggle": {
+      "left": 10,
+      "right": 22.078125,
+      "top": 9,
+      "bottom": 20,
+      "width": 12.078125,
+      "height": 11
+    },
+    "themeOverlapsDock": false,
+    "iconSizes": [
+      {
+        "left": 39,
+        "right": 92,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 102,
+        "right": 155,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 165,
+        "right": 218,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      },
+      {
+        "left": 228,
+        "right": 281,
+        "top": 8,
+        "bottom": 61,
+        "width": 53,
+        "height": 53
+      }
+    ],
     "footerVisible": true,
     "menuVisible": true,
     "bodyScrollW": 320,
     "bodyScrollH": 520,
     "panel": {
-      "top": 64,
-      "bottom": 491.2799987792969,
-      "left": 17.91998291015625,
+      "top": 71.32081604003906,
+      "bottom": 506.5805206298828,
+      "left": 12.502593994140625,
       "right": 308,
-      "height": 427.2799987792969,
-      "width": 290.08001708984375
+      "height": 435.25970458984375,
+      "width": 295.4974060058594
     },
     "panelVisible": true,
     "panelBelowTopbar": true

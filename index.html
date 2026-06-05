@@ -1,265 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
-<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<link rel="shortcut icon" href="/favicon.ico" />
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-<link rel="manifest" href="/site.webmanifest" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>click to enter ~ ehdude</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=VT323&display=swap" rel="stylesheet" />
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .bg {
-      position: fixed;
-      inset: 0;
-      background-image: url("blackhole-tumblr.webp");
-      background-size: cover;
-      background-position: center 60%;
-      filter: brightness(0.75) saturate(1.2);
-      transform: scale(1.04);
-      animation: bgDrift 20s ease-in-out infinite alternate;
-    }
-    @keyframes bgDrift {
-      0%   { transform: scale(1.04) translate(0px, 0px); }
-      100% { transform: scale(1.08) translate(-8px, -4px); }
-    }
-    .bg::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 20%, rgba(0,0,8,0.55) 100%);
-    }
-
-    .cursor {
-      position: fixed;
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: #fff;
-      pointer-events: none;
-      z-index: 999;
-      transform: translate(-50%, -50%);
-      mix-blend-mode: difference;
-      transition: width .25s, height .25s;
-    }
-    .cursor.big { width: 44px; height: 44px; }
-
-    .lockscreen {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 2rem;
-      z-index: 10;
-    }
-
-.time {
-    position: absolute;
-    top: 28%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'VT323', monospace;
-    font-size: clamp(4rem, 14vw, 9rem);
-    color: rgba(220, 235, 255, 0.85);
-    letter-spacing: 0.05em;
-    line-height: 1;
-    text-shadow: 0 0 60px rgba(100,180,255,0.3);
-    user-select: none;
-    white-space: nowrap;  /* Prevent line breaks */
-    font-variant-numeric: tabular-nums;
-}
-
-
-.date {
-    position: absolute;
-    top: 52%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'VT323', monospace;
-    font-style: normal;
-    font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-    color: #ffffff;
-    letter-spacing: 0.4em;
-    text-transform: lowercase;
-    user-select: none;
-    white-space: nowrap;  /* Prevent line breaks */
-}
-
-    .enter-btn {
-      position: absolute;
-      top: 80%;
-      left: 36%;
-	  transform: translateX(-50%);
-	  margin-top: 1.5rem;
-      background: none;
-      border: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      opacity: 0.5;
-      transition: opacity 0.4s;
-      animation: nudge 3s ease-in-out infinite;
-      text-decoration: none;
-    }
-    .enter-btn:hover { opacity: 1; }
-
-    @keyframes nudge {
-      0%,100% { transform: translateY(0); }
-      50%      { transform: translateY(-6px); }
-    }
-
-    .enter-label {
-      font-family: 'VT323', serif;
-      font-style: italic;
-      font-weight: 300;
-      font-size: clamp(0.75rem, 1.5vw, 0.9rem);
-      color: rgba(180, 215, 255, 0.7);
-      letter-spacing: 0.5em;
-      text-transform: lowercase;
-    }
-
-    .enter-arrow {
-      width: 1px;
-      height: 30px;
-      background: linear-gradient(to bottom, rgba(180,215,255,0.6), transparent);
-    }
-
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: #000;
-      z-index: 100;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.8s ease;
-    }
-    .overlay.go { opacity: 1; pointer-events: all; }
-
-	/* For standard mobiles and very narrow "weird" formats */
-@media (max-width: 480px) {
-    .time {
-        /* Shrinks down to 1.5rem maxing out at 3rem on these small devices */
-        font-size: clamp(1.5rem, 8vw, 3rem);
-        letter-spacing: 0.02em; /* Slightly reduce spacing to save horizontal room */
-    }
-    
-    .date {
-        /* Also slightly shrink the date string to match the smaller timer */
-        font-size: clamp(0.9rem, 4vw, 1.2rem);
-    }
-}
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>ehdude ~ Dashboard</title>
+  <script>
+    (() => {
+      try {
+        const savedTheme = localStorage.getItem("dashboard-theme");
+        if (savedTheme === "light" || savedTheme === "dark") {
+          document.documentElement.dataset.theme = savedTheme;
+        }
+      } catch (_) {}
+    })();
+  </script>
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
 </head>
 <body>
+  <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">☾</button>
 
-  <div class="cursor" id="cursor"></div>
-  <div class="bg"></div>
+  <main class="stage" aria-label="Dashboard navigation">
+    <div class="top-bar" aria-label="Main shortcuts">
+      <button class="dock-btn folder-btn" type="button" aria-label="File Explorer">
+        <img class="dock-icon folder-icon" src="folder-svgrepo-com.svg" alt="" aria-hidden="true" />
+        <div class="active_line"></div>
+      </button>
 
-  <div class="lockscreen">
-	<div class="time" id="countdown">00d 00:00:00</div>
-	<div class="date"></div>
-    <a class="enter-btn" href="actual-inside.html" id="enterBtn">
-      <span class="enter-label">click to enter</span>
-      <div class="enter-arrow"></div>
-    </a>
-  </div>
+      <button class="dock-btn start-btn" type="button" aria-label="Start Menu" id="startBtn" aria-expanded="false" aria-controls="startMenu">
+        <img class="dock-icon home-icon" src="home-icon.png" alt="" aria-hidden="true" />
+        <div class="active_line"></div>
+      </button>
 
-  <div class="overlay" id="overlay"></div>
+      <button class="debian-shortcut" type="button" aria-label="Debian">
+        <img class="debian-stroke" src="debian-stroke.png" alt="" aria-hidden="true" />
+        <div class="debian-active-line"></div>
+      </button>
 
-<script>
-(() => {
-  const countdown = document.getElementById('countdown');
+      <button class="scrobble-toggle" type="button" id="scrobbleToggle" aria-label="Open listening widget" aria-expanded="false" aria-controls="scrobblePanel">
+        <img class="scrobble-icon" src="lastfm-svgrepo-com.svg" alt="" aria-hidden="true" />
+        <div class="scrobble-active-line"></div>
+      </button>
+    </div>
 
-  const MS_PER_SECOND = 1_000;
-  const MS_PER_MINUTE = 60 * MS_PER_SECOND;
-  const MS_PER_HOUR = 60 * MS_PER_MINUTE;
-  const MS_PER_DAY = 24 * MS_PER_HOUR;
+    <section class="start-menu hidden" id="startMenu" aria-label="Floating start menu dashboard">
+      <div class="search-bar">
+        <div class="search-bar-inner">
+          <div class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="5.5" cy="5.5" r="4"/>
+              <line x1="8.5" y1="8.5" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <input type="text" placeholder="Search for wot?" />
+        </div>
+      </div>
 
-  /*
-    Precision model:
-    - Date.now() gives wall-clock time, but it can jump if the device clock is adjusted.
-    - performance.now() is monotonic and high-resolution, so it is better for a live countdown.
-    - We anchor wall-clock time once, then advance it with performance.now().
+      <div class="content">
+        <div class="pinned-header">
+          <strong>Pinned</strong>
+          <span class="show-all">Show all apps →</span>
+        </div>
+        <div class="apps-grid" id="appsGrid"></div>
+      </div>
 
-    This is the highest-precision approach available in a normal static browser page.
-    True atomic/GNSS-grade accuracy requires a trusted external time source and network
-    latency compensation, which a standalone static page cannot guarantee.
-  */
-  let wallClockAnchorMs = Date.now();
-  let monotonicAnchorMs = performance.now();
-  let targetMs = getNextLocalNewYearMs(wallClockAnchorMs);
-  let lastRendered = '';
+      <footer class="footer">
+        <div class="user">
+          <div class="user-avatar">🪳</div>
+          <div class="user-text">
+            <strong>eh dude</strong><br />
+            <small>guns.lol/ehdude</small>
+          </div>
+        </div>
+        <a class="ping-link" href="https://ping.ehdude.com" aria-label="Open ping">
+          <div class="power-btn" aria-hidden="true">🎔</div>
+        </a>
+      </footer>
+    </section>
 
-  function getMonotonicWallTimeMs() {
-    return wallClockAnchorMs + (performance.now() - monotonicAnchorMs);
-  }
+    <aside class="scrobble-panel hidden" id="scrobblePanel" aria-label="Listening widget">
+      <div class="scrobble-panel-bar">
+        <button class="scrobble-close" type="button" id="scrobbleClose" aria-label="Close listening widget">×</button>
+      </div>
+      <iframe class="scrobble-frame" id="scrobbleFrame" title="Last.fm widget" loading="lazy"></iframe>
+    </aside>
+  </main>
 
-  function getNextLocalNewYearMs(nowMs) {
-    const now = new Date(nowMs);
-    return new Date(now.getFullYear() + 1, 0, 1, 0, 0, 0, 0).getTime();
-  }
-
-  function resyncAnchor() {
-    wallClockAnchorMs = Date.now();
-    monotonicAnchorMs = performance.now();
-    targetMs = getNextLocalNewYearMs(wallClockAnchorMs);
-  }
-
-  function formatTimeLeft(msLeft) {
-    const safeMs = Math.max(0, msLeft);
-    const days = Math.floor(safeMs / MS_PER_DAY);
-    const hours = Math.floor((safeMs % MS_PER_DAY) / MS_PER_HOUR);
-    const minutes = Math.floor((safeMs % MS_PER_HOUR) / MS_PER_MINUTE);
-    const seconds = Math.floor((safeMs % MS_PER_MINUTE) / MS_PER_SECOND);
-    const centiseconds = Math.floor((safeMs % MS_PER_SECOND) / 10);
-
-    return `${String(days).padStart(3, '0')}d ` +
-      `${String(hours).padStart(2, '0')}:` +
-      `${String(minutes).padStart(2, '0')}:` +
-      `${String(seconds).padStart(2, '0')}.` +
-      `${String(centiseconds).padStart(2, '0')}`;
-  }
-
-  function render() {
-    const nowMs = getMonotonicWallTimeMs();
-
-    if (nowMs >= targetMs) {
-      resyncAnchor();
-    }
-
-    const nextValue = formatTimeLeft(targetMs - getMonotonicWallTimeMs());
-
-    if (nextValue !== lastRendered) {
-      countdown.textContent = nextValue;
-      lastRendered = nextValue;
-    }
-
-    requestAnimationFrame(render);
-  }
-
-  // Re-anchor occasionally and whenever the tab returns from the background.
-  // This corrects sleep/wake jumps, clock edits, daylight-saving changes, and long suspensions.
-  setInterval(resyncAnchor, 60_000);
-  document.addEventListener('visibilitychange', () => {
-    if (!document.hidden) resyncAnchor();
-  });
-  window.addEventListener('focus', resyncAnchor);
-
-  render();
-})();
-</script>
+  <script type="module" src="js/dashboard.js"></script>
 </body>
 </html>

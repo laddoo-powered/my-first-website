@@ -1,24 +1,19 @@
 # ehdude dashboard
 
-Small static split of the dashboard page.
+Static split version of the dashboard.
 
 ## Files
+- `index.html` keeps the markup.
+- `css/theme.css` keeps the light/dark tokens.
+- `css/dashboard.css` keeps the dashboard, dock, popup, and listening-widget layout.
+- `js/dashboard.js` keeps the app grid, popup toggles, lazy iframe loading, and tiny theme toggle.
+- `lastfm-svgrepo-com.svg` is included as a small placeholder for the fourth dock gem.
 
-- `index.html` keeps the markup lean.
-- `css/theme.css` contains the light/dark tokens from your supplied theme base.
-- `css/dashboard.css` contains the dashboard, dock, popup, and widget shell styling.
-- `js/dashboard.js` handles the theme toggle, app grid, popup, and listening-widget iframe.
-- `screenshots/` contains the viewport checks that were generated after the split.
-- `layout-check.json` contains measured bounds for the tested viewports.
-
-## Asset note
-
-Keep these existing assets beside `index.html`, just like the original page expects:
-
+## Notes
+The original visual assets should live beside `index.html`:
 - `blue-waves.webp`
 - `folder-svgrepo-com.svg`
 - `home-icon.png`
 - `debian-stroke.png`
-- favicon/site manifest assets if your deployment serves them from `/`
 
-The Last.fm iframe is lazy-loaded only when the small `fm` dock toggle is opened.
+The listening widget iframe is lazy-loaded only after the `last.fm` dock icon is clicked.

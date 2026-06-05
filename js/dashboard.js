@@ -3,7 +3,7 @@ const themeToggle = document.getElementById("themeToggle");
 
 function syncThemeToggle() {
   const currentTheme = root.dataset.theme === "light" ? "light" : "dark";
-  themeToggle.textContent = currentTheme;
+  themeToggle.textContent = currentTheme === "dark" ? "☾" : "☼";
   themeToggle.setAttribute("aria-label", `Switch to ${currentTheme === "dark" ? "light" : "dark"} theme`);
 }
 

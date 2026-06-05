@@ -22,7 +22,7 @@ async def main():
                 ('mobile320short', 320, 520),
             ]:
                 page = await browser.new_page(viewport={'width': w, 'height': h}, device_scale_factor=1, is_mobile=w<768)
-                await page.goto((ROOT / 'index.html').as_uri(), wait_until='load')
+                await page.goto(f'http://127.0.0.1:{PORT}/index.html', wait_until='domcontentloaded')
                 # closed screenshot
                 await page.screenshot(path=str(ROOT / f'{name}_closed.png'), full_page=True)
                 # start menu open
