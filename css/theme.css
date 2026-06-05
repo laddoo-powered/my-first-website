@@ -37,28 +37,3 @@ body {
   background: var(--color-bg-primary);
   color: var(--color-text-primary);
 }
-
-.theme-toggle {
-  position: fixed;
-  top: 12px;
-  left: 14px;
-  z-index: 999;
-  appearance: none;
-  background: transparent;
-  border: 0;
-  padding: 0;
-  margin: 0;
-  font: inherit;
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  opacity: 0.9;
-}
-
-.theme-toggle:hover,
-.theme-toggle:focus-visible {
-  color: var(--color-text-primary);
-  outline: none;
-}

@@ -124,6 +124,8 @@ body {
 .scrobble-icon {
   width: var(--dock-icon-size);
   height: var(--dock-icon-size);
+  min-width: 0;
+  min-height: 0;
   display: block;
   object-fit: contain;
   pointer-events: none;
@@ -150,9 +152,9 @@ body {
 }
 
 .scrobble-icon {
-  filter:
-    drop-shadow(0 0 0.18em rgba(213, 16, 7, 0.45))
-    drop-shadow(0 0 0.4em rgba(213, 16, 7, 0.2));
+  max-width: var(--dock-icon-size);
+  max-height: var(--dock-icon-size);
+  filter: none;
 }
 
 .folder-btn .active_line,
