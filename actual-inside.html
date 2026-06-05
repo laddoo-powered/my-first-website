@@ -15,8 +15,6 @@
       --text: rgba(255, 255, 255, 0.85);
       --text-hover: #ffffff;
       --accent: #00d4ff;
-      --dock-icon-size: 4.16em;
-      --home-icon-size: 3.72em;
     }
 
     * {
@@ -109,8 +107,8 @@
 
     .dock-icon,
     .debian-stroke {
-      width: var(--dock-icon-size);
-      height: var(--dock-icon-size);
+      width: 4.16em;
+      height: 4.16em;
       display: block;
       object-fit: contain;
       pointer-events: none;
@@ -125,8 +123,6 @@
     }
 
     .home-icon {
-      width: var(--home-icon-size);
-      height: var(--home-icon-size);
       filter:
         drop-shadow(0 0 0.18em rgba(16, 122, 176, 0.45))
         drop-shadow(0 0 0.4em rgba(16, 122, 176, 0.2));
@@ -205,7 +201,7 @@
     ══════════════════════════════════════════════════ */
     .start-menu {
       width: min(680px, calc(100vw - 48px));
-      height: min(820px, calc(100vh - 126px));
+      height: min(820px, calc(100vh - 104px));
       background: #2b2b2b;
       border-radius: 0 0 16px 16px;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255,255,255,0.06);
@@ -426,7 +422,7 @@
 
       .start-menu {
         width: calc(100vw - 28px);
-        height: calc(100vh - 118px);
+        height: calc(100vh - 90px);
       }
 
       .apps-grid {
@@ -450,6 +446,593 @@
         gap: 6px;
       }
     }
+
+
+    /* ══════════════════════════════════════════════════
+       STANDALONE MUSIC PLAYER WIDGET — overlay only
+       Debian stays untouched; this is its own floating player.
+    ══════════════════════════════════════════════════ */
+    .music-launcher {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 1200;
+      width: 175px;
+      height: 175px;
+      display: block;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .music-launcher:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.9);
+      outline-offset: 8px;
+      border-radius: 12px;
+    }
+
+    /* From Uiverse.io by TheAbieza */
+    .container {
+      width: 175px;
+      height: 175px;
+      background-color: #ABC4AA;
+      border-radius: 10px;
+      position: relative;
+      box-shadow: 5px 5px 0 0 #675D50;
+    }
+
+    .plate {
+      width: fit-content;
+    }
+
+    .plate .black,
+    .plate .white,
+    .plate .center,
+    .plate .border {
+      border-radius: 100%;
+    }
+
+    .container,
+    .plate .black,
+    .plate .white,
+    .plate .border {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plate .black {
+      width: 150px;
+      height: 150px;
+      background-color: #675D50;
+      animation: rotation 2s infinite linear;
+    }
+
+    @keyframes rotation {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(359deg);
+      }
+    }
+
+    .plate .white {
+      width: 70px;
+      height: 70px;
+      background-color: #F3DEBA;
+    }
+
+    .plate .center {
+      width: 20px;
+      height: 20px;
+      background-color: #675D50;
+    }
+
+    .plate .border {
+      width: 111px;
+      height: 111px;
+      border-top: 3px solid #F3DEBA;
+      border-bottom: 3px solid #F3DEBA;
+      border-left: 3px solid #675D50;
+      border-right: 3px solid #675D50;
+    }
+
+    .player {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: fit-content;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      margin-bottom: 8px;
+      margin-right: 8px;
+      rotate: -45deg;
+      transform: rotate(-45deg);
+    }
+
+    .player .circ {
+      width: 25px;
+      height: 25px;
+      background-color: #F3DEBA;
+      border-radius: 100%;
+      z-index: 1;
+    }
+
+    .player .rect {
+      width: 10px;
+      height: 55px;
+      background-color: #F3DEBA;
+      position: absolute;
+      bottom: 0;
+      margin-bottom: 5px;
+    }
+
+    .music-widget {
+      position: fixed;
+      right: 22px;
+      bottom: 214px;
+      z-index: 1190;
+      width: min(400px, calc(100vw - 44px));
+      max-height: min(690px, calc(100vh - 238px));
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      color: white;
+      background: rgba(2, 8, 20, 0.82);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      border-radius: 26px;
+      box-shadow:
+        0 0 0 1px rgba(0, 212, 255, 0.08) inset,
+        0 0 60px rgba(0, 212, 255, 0.06),
+        0 40px 100px rgba(0, 0, 0, 0.72),
+        0 2px 0 rgba(255,255,255,0.07) inset;
+      backdrop-filter: blur(28px) saturate(1.6);
+      -webkit-backdrop-filter: blur(28px) saturate(1.6);
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      visibility: visible;
+      pointer-events: auto;
+      overflow: hidden;
+      transform-origin: bottom right;
+      transition:
+        opacity 0.22s cubic-bezier(0.0, 0, 0.2, 1),
+        transform 0.22s cubic-bezier(0.0, 0, 0.2, 1),
+        visibility 0s linear 0s;
+    }
+
+    .music-widget.hidden {
+      opacity: 0;
+      transform: translateY(14px) scale(0.97);
+      visibility: hidden;
+      pointer-events: none;
+      transition:
+        opacity 0.22s cubic-bezier(0.4, 0, 1, 1),
+        transform 0.22s cubic-bezier(0.4, 0, 1, 1),
+        visibility 0s linear 0.22s;
+    }
+
+    /* ── widget topline ── */
+    .music-widget-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 18px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", monospace;
+    }
+
+    .music-widget-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      font-size: 9.5px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.44);
+    }
+
+    .music-widget-status::before {
+      content: "";
+      flex-shrink: 0;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #00d4ff;
+      box-shadow: 0 0 8px #00d4ff, 0 0 20px rgba(0, 212, 255, 0.5);
+      animation: pulse-dot 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .music-close {
+      width: 28px;
+      height: 28px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      font-size: 15px;
+      line-height: 1;
+      transition: all 0.18s ease;
+    }
+
+    .music-close:hover,
+    .music-close:focus-visible {
+      outline: none;
+      color: white;
+      border-color: rgba(255, 255, 255, 0.38);
+      background: rgba(255, 255, 255, 0.09);
+      transform: rotate(90deg);
+    }
+
+    .music-widget-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    /* ── artwork strip (replaces jewel-case square) ── */
+    .jewel-case {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 7;
+      border-radius: 0;
+      background:
+        linear-gradient(160deg, rgba(0,212,255,0.07) 0%, transparent 50%),
+        rgba(255,255,255,0.018);
+      overflow: hidden;
+      isolation: isolate;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* scanline texture */
+    .jewel-case::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(0,0,0,0.18) 3px,
+        rgba(0,0,0,0.18) 4px
+      );
+      z-index: 4;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+    }
+
+    /* top-left corner light */
+    .jewel-case::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 18% 30%, rgba(0,212,255,0.14) 0%, transparent 60%);
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    /* hide the unused corner decorations */
+    .jewel-corner { display: none; }
+    .jewel-spine { display: none; }
+
+    .disc {
+      position: absolute;
+      inset: 0;
+      display: block;
+      border-radius: 0;
+      background:
+        url("tumblr_eeae2e78c97e32719dae4d19aaed63bf_1280.jpg") center / cover no-repeat,
+        linear-gradient(135deg, #0a1628 0%, #000c1f 100%);
+      border: none;
+      box-shadow: none;
+      z-index: 1;
+    }
+
+    /* dark overlay for readability */
+    .disc::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.15) 0%,
+        rgba(0,0,0,0.45) 100%
+      );
+      border: none;
+      box-shadow: none;
+    }
+
+    /* iridescent sheen */
+    .disc::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 0;
+      background:
+        linear-gradient(108deg, transparent 0 40%, rgba(0,212,255,0.12) 50%, transparent 60%);
+      mix-blend-mode: screen;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    /* ── now playing section ── */
+    .music-meta {
+      display: grid;
+      gap: 0;
+      padding: 18px 18px 0;
+      font-family: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", monospace;
+    }
+
+    .music-meta-kicker {
+      font-size: 9px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #00d4ff;
+      margin-bottom: 6px;
+      opacity: 0.82;
+    }
+
+    .music-track {
+      font-size: clamp(20px, 5vw, 28px);
+      line-height: 1.02;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.97);
+      letter-spacing: -0.04em;
+      text-wrap: balance;
+      margin-bottom: 5px;
+    }
+
+    .music-artist {
+      font-size: 11.5px;
+      color: rgba(255, 255, 255, 0.42);
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    /* ── progress bar ── */
+    .music-progress {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 18px 18px;
+      color: rgba(255, 255, 255, 0.36);
+      font-family: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.04em;
+    }
+
+    .music-progress-track {
+      flex: 1;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .music-progress-fill {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 44%;
+      background: linear-gradient(90deg, rgba(0, 212, 255, 0.8), rgba(255,255,255,0.9));
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+    }
+
+    .music-progress-thumb {
+      position: absolute;
+      right: -1px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 0 0 2px rgba(0,212,255,0.5), 0 0 12px rgba(0,212,255,0.4);
+    }
+
+    /* ── controls ── */
+    .music-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 2px 18px 20px;
+    }
+
+    .music-control {
+      width: 38px;
+      height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.56);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      flex-shrink: 0;
+    }
+
+    .music-control:hover {
+      border-color: rgba(255, 255, 255, 0.26);
+      background: rgba(255, 255, 255, 0.08);
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* SVG icons inside controls */
+    .music-control svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+
+    .music-control.play {
+      width: 52px;
+      height: 52px;
+      border: 1.5px solid rgba(0, 212, 255, 0.6);
+      background: rgba(0, 212, 255, 0.08);
+      color: rgba(0, 212, 255, 0.95);
+      box-shadow: 0 0 20px rgba(0, 212, 255, 0.12), inset 0 0 12px rgba(0,212,255,0.06);
+    }
+
+    .music-control.play:hover {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: rgba(0, 212, 255, 0.9);
+      box-shadow: 0 0 28px rgba(0, 212, 255, 0.28);
+    }
+
+    .music-control.play svg {
+      width: 18px;
+      height: 18px;
+      transform: translateX(1px);
+    }
+
+    .music-control.shuffle,
+    .music-control.repeat {
+      width: 30px;
+      height: 30px;
+      border-color: transparent;
+      background: transparent;
+    }
+
+    .music-control.shuffle svg,
+    .music-control.repeat svg {
+      width: 12px;
+      height: 12px;
+    }
+
+    /* ── recent tracks ── */
+    .music-recent {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      font-family: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", monospace;
+    }
+
+    .music-recent-header {
+      padding: 12px 18px 8px;
+      font-size: 8.5px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.24);
+    }
+
+    .music-recent-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 18px;
+      border-top: 1px solid rgba(255, 255, 255, 0.04);
+      color: rgba(255, 255, 255, 0.56);
+      font-size: 11px;
+      transition: background 0.15s ease;
+    }
+
+    .music-recent-row:hover {
+      background: rgba(255, 255, 255, 0.03);
+      color: rgba(255, 255, 255, 0.82);
+    }
+
+    .music-recent-row:first-child {
+      border-top-color: transparent;
+    }
+
+    .music-recent-num {
+      font-size: 9px;
+      color: rgba(255,255,255,0.22);
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+
+    .music-recent-row:hover .music-recent-num {
+      color: #00d4ff;
+    }
+
+    .music-recent-title {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .music-recent-time {
+      color: rgba(255, 255, 255, 0.24);
+      font-size: 9.5px;
+    }
+
+    .music-widget-frame {
+      display: none;
+      width: 100%;
+      flex: 1;
+      min-height: 480px;
+      border: 0;
+      border-radius: 0 0 24px 24px;
+      background: transparent;
+    }
+
+    /* when a real URL is set: hide the placeholder inner and show the iframe */
+    .music-widget.has-frame .music-widget-inner {
+      display: none;
+    }
+
+    .music-widget.has-frame .music-widget-frame {
+      display: block;
+    }
+
+    /* subtle artwork shimmer when widget is open */
+    @media (prefers-reduced-motion: no-preference) {
+      .music-widget:not(.hidden) .music-progress-fill {
+        animation: progress-glow 3s ease-in-out infinite;
+      }
+
+      @keyframes progress-glow {
+        0%, 100% { box-shadow: 0 0 8px rgba(0, 212, 255, 0.4); }
+        50% { box-shadow: 0 0 18px rgba(0, 212, 255, 0.8); }
+      }
+    }
+
+    @media (max-width: 560px) {
+      .music-launcher {
+        right: 12px;
+        bottom: 12px;
+        width: 175px;
+        height: 175px;
+      }
+
+      .music-widget {
+        right: 12px;
+        bottom: 204px;
+        width: calc(100vw - 24px);
+        max-height: calc(100vh - 228px);
+        border-radius: 22px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -466,7 +1049,7 @@
 
       <!-- Home / Start Menu toggle -->
       <button class="dock-btn start-btn" type="button" aria-label="Start Menu" id="startBtn" aria-expanded="false">
-        <img class="dock-icon home-icon" src="home-icon.svg" alt="" aria-hidden="true" />
+        <img class="dock-icon home-icon" src="home-icon.png" alt="" aria-hidden="true" />
         <div class="active_line"></div>
       </button>
 
@@ -509,10 +1092,116 @@
           </div>
         </div>
         <a style="text-decoration: none; color: inherit;" href="https://ping.ehdude.com">
-          <div class="power-btn" aria-label="Power">📩</div>
+          <div class="power-btn" aria-label="Power">🎔</div>
         </a>
       </div>
     </div>
+
+
+    <!-- ── Standalone music player widget: overlay-only, dashboard untouched ── -->
+    <button class="music-launcher" type="button" id="musicTrigger" aria-label="Open music player" aria-expanded="false" aria-controls="musicWidget">
+      <!-- From Uiverse.io by TheAbieza -->
+      <div class="container" aria-hidden="true">
+        <div class="plate">
+          <div class="black">
+            <div class="border">
+              <div class="white">
+                <div class="center"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="player">
+          <div class="rect"></div>
+          <div class="circ"></div>
+        </div>
+      </div>
+    </button>
+
+    <aside class="music-widget hidden" id="musicWidget" aria-label="Standalone music player widget">
+      <div class="music-widget-topline">
+        <div class="music-widget-status">player standby</div>
+        <button class="music-close" type="button" id="musicClose" aria-label="Close music player">×</button>
+      </div>
+
+      <div class="music-widget-inner">
+        <!-- artwork strip -->
+        <div class="jewel-case" aria-hidden="true">
+          <div class="disc"></div>
+          <div class="jewel-corner tl"></div>
+          <div class="jewel-corner tr"></div>
+          <div class="jewel-corner bl"></div>
+          <div class="jewel-corner br"></div>
+          <div class="jewel-spine"></div>
+        </div>
+
+        <!-- track info -->
+        <div class="music-meta">
+          <div class="music-meta-kicker">now playing</div>
+          <div class="music-track">No track loaded</div>
+          <div class="music-artist">Last.fm widget can plug in here later.</div>
+        </div>
+
+        <!-- progress -->
+        <div class="music-progress" aria-hidden="true">
+          <span>0:00</span>
+          <div class="music-progress-track">
+            <div class="music-progress-fill">
+              <div class="music-progress-thumb"></div>
+            </div>
+          </div>
+          <span>0:00</span>
+        </div>
+
+        <!-- controls -->
+        <div class="music-controls" aria-hidden="true">
+          <!-- shuffle -->
+          <button class="music-control shuffle" title="Shuffle">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 3h5v5l-1.8-1.8-4.5 4.5-1.4-1.4 4.5-4.5L16 3zm-9.3 12.7l-1.4-1.4 4.5-4.5 1.4 1.4-4.5 4.5zM16 21l1.8-1.8-4.5-4.5 1.4-1.4 4.5 4.5L21 21h-5zm-13-2v-5l1.8 1.8 4.5-4.5 1.4 1.4-4.5 4.5L8 19H3z"/></svg>
+          </button>
+          <!-- prev -->
+          <button class="music-control prev" title="Previous">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h2v12H6V6zm3.5 6l8.5 6V6L9.5 12z"/></svg>
+          </button>
+          <!-- play -->
+          <button class="music-control play" title="Play / Pause">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+          <!-- next -->
+          <button class="music-control next" title="Next">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6 18l8.5-6L6 6v12zm2-8.14L11.03 12 8 14.14V9.86zM16 6h2v12h-2V6z"/></svg>
+          </button>
+          <!-- repeat -->
+          <button class="music-control repeat" title="Repeat">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          </button>
+        </div>
+
+        <!-- recent tracks -->
+        <div class="music-recent" aria-label="Recent tracks placeholder">
+          <div class="music-recent-header">recent</div>
+          <div class="music-recent-row">
+            <span class="music-recent-num">1</span>
+            <span class="music-recent-title">recent track slot</span>
+            <span class="music-recent-time">--:--</span>
+          </div>
+          <div class="music-recent-row">
+            <span class="music-recent-num">2</span>
+            <span class="music-recent-title">recent track slot</span>
+            <span class="music-recent-time">--:--</span>
+          </div>
+          <div class="music-recent-row">
+            <span class="music-recent-num">3</span>
+            <span class="music-recent-title">recent track slot</span>
+            <span class="music-recent-time">--:--</span>
+          </div>
+        </div>
+      </div>
+
+      <iframe class="music-widget-frame" id="musicWidgetFrame" title="Last.fm widget" loading="lazy"></iframe>
+    </aside>
+
 
   </main>
 
@@ -567,6 +1256,57 @@
         startMenu.classList.add("hidden");
         startBtn.classList.remove("menu-open");
         startBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+
+    /* ── Standalone music player overlay ────────────────────────────── */
+
+    // ▼ PASTE YOUR VERCEL URL HERE after deploying lastfm-vercel-widget ▼
+    // e.g.  const LASTFM_WIDGET_URL = "https://my-lastfm-widget.vercel.app";
+    const LASTFM_WIDGET_URL = "https://lastfm-vercel-widget-deploy.vercel.app/";
+    // ▲ ─────────────────────────────────────────────────────────────── ▲
+
+    const musicTrigger = document.getElementById("musicTrigger");
+    const musicWidget  = document.getElementById("musicWidget");
+    const musicClose   = document.getElementById("musicClose");
+    const musicWidgetFrame  = document.getElementById("musicWidgetFrame");
+    const musicStatus  = musicWidget.querySelector(".music-widget-status");
+
+    if (LASTFM_WIDGET_URL && musicWidgetFrame) {
+      musicWidgetFrame.src = LASTFM_WIDGET_URL;
+      musicWidget.classList.add("has-frame");
+      if (musicStatus) musicStatus.textContent = "live · last.fm";
+    }
+
+    function setMusicWidget(open) {
+      musicWidget.classList.toggle("hidden", !open);
+      musicTrigger.classList.toggle("is-open", open);
+      musicTrigger.setAttribute("aria-expanded", String(open));
+    }
+
+    musicTrigger.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setMusicWidget(musicWidget.classList.contains("hidden"));
+    });
+
+    musicClose.addEventListener("click", (event) => {
+      event.stopPropagation();
+      setMusicWidget(false);
+      musicTrigger.focus();
+    });
+
+    musicWidget.addEventListener("click", (event) => {
+      event.stopPropagation();
+    });
+
+    document.addEventListener("click", () => {
+      setMusicWidget(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        setMusicWidget(false);
       }
     });
   </script>
