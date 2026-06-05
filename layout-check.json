@@ -1,0 +1,268 @@
+[
+  {
+    "name": "desktop",
+    "viewport": {
+      "w": 1366,
+      "h": 768
+    },
+    "startMenu": {
+      "top": 82.31999969482422,
+      "bottom": 710.1599655151367,
+      "left": 343,
+      "right": 1023,
+      "height": 627.8399658203125,
+      "width": 680
+    },
+    "footer": {
+      "top": 620.8800048828125,
+      "bottom": 710.1599731445312,
+      "height": 89.27996826171875
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 75.828125
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 1366,
+    "bodyScrollH": 768,
+    "panel": {
+      "top": 82,
+      "bottom": 709.2000122070312,
+      "left": 962,
+      "right": 1354,
+      "height": 627.2000122070312,
+      "width": 392
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "tablet",
+    "viewport": {
+      "w": 768,
+      "h": 1024
+    },
+    "startMenu": {
+      "top": 78.31999969482422,
+      "bottom": 967.2799606323242,
+      "left": 14,
+      "right": 754,
+      "height": 888.9599609375,
+      "width": 740
+    },
+    "footer": {
+      "top": 891.4400024414062,
+      "bottom": 967.2799682617188,
+      "height": 75.8399658203125
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 75.828125
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 768,
+    "bodyScrollH": 1024,
+    "panel": {
+      "top": 78,
+      "bottom": 979.6000366210938,
+      "left": 26.8800048828125,
+      "right": 756,
+      "height": 901.6000366210938,
+      "width": 729.1199951171875
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "mobile430",
+    "viewport": {
+      "w": 430,
+      "h": 932
+    },
+    "startMenu": {
+      "top": 70.31999969482422,
+      "bottom": 880.5599899291992,
+      "left": 10,
+      "right": 420,
+      "height": 810.239990234375,
+      "width": 410
+    },
+    "footer": {
+      "top": 804.719970703125,
+      "bottom": 880.5599975585938,
+      "height": 75.84002685546875
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 67.359375
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 430,
+    "bodyScrollH": 932,
+    "panel": {
+      "top": 72,
+      "bottom": 891.280029296875,
+      "left": 20.1199951171875,
+      "right": 418,
+      "height": 819.280029296875,
+      "width": 397.8800048828125
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "mobile390",
+    "viewport": {
+      "w": 390,
+      "h": 844
+    },
+    "startMenu": {
+      "top": 70.31999969482422,
+      "bottom": 796.0800094604492,
+      "left": 10,
+      "right": 380,
+      "height": 725.760009765625,
+      "width": 370
+    },
+    "footer": {
+      "top": 720.239990234375,
+      "bottom": 796.0800170898438,
+      "height": 75.84002685546875
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 67.359375
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 390,
+    "bodyScrollH": 844,
+    "panel": {
+      "top": 72,
+      "bottom": 805.0400390625,
+      "left": 19.32000732421875,
+      "right": 378,
+      "height": 733.0400390625,
+      "width": 358.67999267578125
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "mobile360",
+    "viewport": {
+      "w": 360,
+      "h": 740
+    },
+    "startMenu": {
+      "top": 64.31999969482422,
+      "bottom": 695.9999923706055,
+      "left": 10,
+      "right": 350,
+      "height": 631.6799926757812,
+      "width": 340
+    },
+    "footer": {
+      "top": 624,
+      "bottom": 696,
+      "height": 72
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 61
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 360,
+    "bodyScrollH": 740,
+    "panel": {
+      "top": 72,
+      "bottom": 703.1199951171875,
+      "left": 18.720001220703125,
+      "right": 348,
+      "height": 631.1199951171875,
+      "width": 329.2799987792969
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "mobile320",
+    "viewport": {
+      "w": 320,
+      "h": 568
+    },
+    "startMenu": {
+      "top": 62.31999969482422,
+      "bottom": 532.7199630737305,
+      "left": 10,
+      "right": 310,
+      "height": 470.39996337890625,
+      "width": 300
+    },
+    "footer": {
+      "top": 462.6399841308594,
+      "bottom": 532.719970703125,
+      "height": 70.07998657226562
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 61
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 320,
+    "bodyScrollH": 568,
+    "panel": {
+      "top": 64,
+      "bottom": 538.3200073242188,
+      "left": 17.91998291015625,
+      "right": 308,
+      "height": 474.32000732421875,
+      "width": 290.08001708984375
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  },
+  {
+    "name": "mobile320short",
+    "viewport": {
+      "w": 320,
+      "h": 520
+    },
+    "startMenu": {
+      "top": 62.31999969482422,
+      "bottom": 486.63997650146484,
+      "left": 10,
+      "right": 310,
+      "height": 424.3199768066406,
+      "width": 300
+    },
+    "footer": {
+      "top": 416.55999755859375,
+      "bottom": 486.6399841308594,
+      "height": 70.07998657226562
+    },
+    "topbar": {
+      "top": 8,
+      "bottom": 61
+    },
+    "footerVisible": true,
+    "menuVisible": true,
+    "bodyScrollW": 320,
+    "bodyScrollH": 520,
+    "panel": {
+      "top": 64,
+      "bottom": 491.2799987792969,
+      "left": 17.91998291015625,
+      "right": 308,
+      "height": 427.2799987792969,
+      "width": 290.08001708984375
+    },
+    "panelVisible": true,
+    "panelBelowTopbar": true
+  }
+]
