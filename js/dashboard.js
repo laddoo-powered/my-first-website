@@ -63,50 +63,31 @@ startMenu.addEventListener("click", (event) => {
 });
 
 const LASTFM_WIDGET_URL = "https://lastfm-vercel-widget-deploy.vercel.app/";
-
-const scrobbleToggle = document.getElementById("scrobbleToggle");
-const scrobblePanel = document.getElementById("scrobblePanel");
-const scrobbleClose = document.getElementById("scrobbleClose");
+const scrobbleTicker = document.getElementById("scrobbleTicker");
 const scrobbleFrame = document.getElementById("scrobbleFrame");
-let scrobbleLoaded = false;
+const lastfmOrigin = new URL(LASTFM_WIDGET_URL).origin;
 
-function ensureScrobbleLoaded() {
-  if (!scrobbleLoaded && LASTFM_WIDGET_URL && scrobbleFrame) {
-    scrobbleFrame.src = LASTFM_WIDGET_URL;
-    scrobbleLoaded = true;
-  }
+if (scrobbleFrame && LASTFM_WIDGET_URL) {
+  scrobbleFrame.src = LASTFM_WIDGET_URL;
 }
 
-function setScrobblePanel(open) {
-  if (open) ensureScrobbleLoaded();
-  scrobblePanel.classList.toggle("hidden", !open);
-  scrobbleToggle.classList.toggle("is-open", open);
-  scrobbleToggle.setAttribute("aria-expanded", String(open));
+function setScrobbleTicker(live) {
+  scrobbleTicker?.classList.toggle("hidden", !live);
+  document.body.classList.toggle("has-live-scrobble", Boolean(live));
 }
 
-scrobbleToggle.addEventListener("click", (event) => {
-  event.stopPropagation();
-  setScrobblePanel(scrobblePanel.classList.contains("hidden"));
-});
-
-scrobbleClose.addEventListener("click", (event) => {
-  event.stopPropagation();
-  setScrobblePanel(false);
-  scrobbleToggle.focus();
-});
-
-scrobblePanel.addEventListener("click", (event) => {
-  event.stopPropagation();
+window.addEventListener("message", (event) => {
+  if (event.origin !== lastfmOrigin) return;
+  if (event.data?.type !== "lastfm:scrobble-status") return;
+  setScrobbleTicker(event.data.isLive === true);
 });
 
 document.addEventListener("click", () => {
   setStartMenu(false);
-  setScrobblePanel(false);
 });
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     setStartMenu(false);
-    setScrobblePanel(false);
   }
 });

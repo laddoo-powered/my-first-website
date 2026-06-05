@@ -485,82 +485,47 @@ body {
   color: #9c6454;
 }
 
-.scrobble-panel {
+
+.scrobble-ticker {
   position: fixed;
-  top: calc(max(8px, env(safe-area-inset-top)) + 82px);
-  right: max(12px, env(safe-area-inset-right));
-  z-index: 900;
-  width: min(400px, calc(100vw - 24px));
-  height: min(640px, calc(100dvh - 108px - env(safe-area-inset-bottom)));
-  display: flex;
-  flex-direction: column;
+  left: max(0px, env(safe-area-inset-left));
+  right: max(0px, env(safe-area-inset-right));
+  bottom: max(0px, env(safe-area-inset-bottom));
+  z-index: 950;
+  height: 70px;
   overflow: hidden;
-  background: var(--color-bg-secondary);
-  color: var(--color-text-primary);
-  border: 1px solid var(--color-border-primary);
-  border-radius: var(--menu-radius);
-  box-shadow: 4px 6px 12px var(--color-shadow);
+  background: transparent;
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
-  transform-origin: top right;
+  transform: translateY(0);
   transition:
-    opacity 0.18s ease,
-    transform 0.18s ease,
+    opacity 0.22s ease,
+    transform 0.22s ease,
     visibility 0s linear 0s;
 }
 
-.scrobble-panel.hidden {
+.scrobble-ticker.hidden {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translateY(-8px) scale(0.98);
+  transform: translateY(102%);
   transition:
-    opacity 0.16s ease,
-    transform 0.16s ease,
-    visibility 0s linear 0.16s;
-}
-
-.scrobble-panel-bar {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 8px;
-  background: var(--color-bg-secondary);
-  border-bottom: 1px solid var(--color-border-secondary);
-}
-
-.scrobble-close {
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid var(--color-border-primary);
-  border-radius: 10px;
-  background: var(--color-bg-tertiary);
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  font: 18px/1 Georgia, serif;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-
-.scrobble-close:hover,
-.scrobble-close:focus-visible {
-  outline: none;
-  color: var(--color-accent-contrast);
-  border-color: var(--color-accent);
-  background: var(--color-accent);
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0s linear 0.18s;
 }
 
 .scrobble-frame {
   width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
+  height: 100%;
   border: 0;
   background: transparent;
+  display: block;
+}
+
+body.has-live-scrobble .stage {
+  padding-bottom: max(86px, calc(var(--stage-pad-bottom) + 70px + env(safe-area-inset-bottom)));
 }
 
 @media (max-width: 768px) {
@@ -614,12 +579,12 @@ body {
     font-size: 20px;
   }
 
-  .scrobble-panel {
-    top: 86px;
-    left: max(12px, env(safe-area-inset-left));
-    right: max(12px, env(safe-area-inset-right));
-    width: auto;
-    height: calc(100dvh - 104px - env(safe-area-inset-bottom));
+  .scrobble-ticker {
+    height: 78px;
+  }
+
+  body.has-live-scrobble .stage {
+    padding-bottom: max(92px, calc(var(--stage-pad-bottom) + 78px + env(safe-area-inset-bottom)));
   }
 }
 
@@ -646,9 +611,12 @@ body {
     font-size: 12px;
   }
 
-  .scrobble-panel {
-    top: 80px;
-    height: calc(100dvh - 96px - env(safe-area-inset-bottom));
+  .scrobble-ticker {
+    height: 84px;
+  }
+
+  body.has-live-scrobble .stage {
+    padding-bottom: max(98px, calc(var(--stage-pad-bottom) + 84px + env(safe-area-inset-bottom)));
   }
 }
 
@@ -698,8 +666,11 @@ body {
     padding-bottom: 6px;
   }
 
-  .scrobble-panel {
-    top: 72px;
-    height: calc(100dvh - 84px - env(safe-area-inset-bottom));
+  .scrobble-ticker {
+    height: 72px;
+  }
+
+  body.has-live-scrobble .stage {
+    padding-bottom: max(82px, calc(var(--stage-pad-bottom) + 72px + env(safe-area-inset-bottom)));
   }
 }

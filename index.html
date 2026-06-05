@@ -42,10 +42,6 @@
         <div class="debian-active-line"></div>
       </button>
 
-      <button class="scrobble-toggle" type="button" id="scrobbleToggle" aria-label="Open listening widget" aria-expanded="false" aria-controls="scrobblePanel">
-        <img class="scrobble-icon" src="lastfm-svgrepo-com.svg" width="53" height="53" alt="" aria-hidden="true" />
-        <div class="scrobble-active-line"></div>
-      </button>
     </div>
 
     <section class="start-menu hidden" id="startMenu" aria-label="Floating start menu dashboard">
@@ -83,11 +79,8 @@
       </footer>
     </section>
 
-    <aside class="scrobble-panel hidden" id="scrobblePanel" aria-label="Listening widget">
-      <div class="scrobble-panel-bar">
-        <button class="scrobble-close" type="button" id="scrobbleClose" aria-label="Close listening widget">×</button>
-      </div>
-      <iframe class="scrobble-frame" id="scrobbleFrame" title="Last.fm widget" loading="lazy"></iframe>
+    <aside class="scrobble-ticker hidden" id="scrobbleTicker" aria-live="polite" aria-label="Currently scrobbling">
+      <iframe class="scrobble-frame" id="scrobbleFrame" title="Current Last.fm scrobble" loading="eager"></iframe>
     </aside>
   </main>
 
