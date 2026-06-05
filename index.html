@@ -1,80 +1,85 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="dark">
 <head>
-  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <meta charset="UTF-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#000c1f" />
+
   <title>ehdude ~ Dashboard</title>
+
+  <link rel="icon" href="/favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/png" href="/assets/icons/favicon-96.png" sizes="96x96" />
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" sizes="180x180" />
+  <link rel="manifest" href="/site.webmanifest" />
+
   <script>
     (() => {
       try {
-        const savedTheme = localStorage.getItem("dashboard-theme");
-        if (savedTheme === "light" || savedTheme === "dark") {
-          document.documentElement.dataset.theme = savedTheme;
+        const theme = localStorage.getItem("dashboard-theme");
+        if (theme === "light" || theme === "dark") {
+          document.documentElement.dataset.theme = theme;
         }
-      } catch (_) {}
+      } catch {}
     })();
   </script>
-  <link rel="stylesheet" href="css/theme.css" />
-  <link rel="stylesheet" href="css/dashboard.css" />
+
+  <link rel="stylesheet" href="/assets/css/main.css" />
 </head>
 <body>
   <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch theme">☾</button>
 
   <main class="stage" aria-label="Dashboard navigation">
-    <div class="top-bar" aria-label="Main shortcuts">
-      <button class="dock-btn folder-btn" type="button" aria-label="File Explorer">
-        <img class="dock-icon folder-icon" src="folder-svgrepo-com.svg" alt="" aria-hidden="true" />
-        <div class="active_line"></div>
+    <nav class="dock" aria-label="Main shortcuts">
+      <button class="dock-button" type="button" aria-label="File Explorer">
+        <img class="dock-icon dock-icon--folder" src="/assets/icons/folder.svg" alt="" aria-hidden="true" />
+        <span class="dock-indicator" aria-hidden="true"></span>
       </button>
 
-      <button class="dock-btn start-btn" type="button" aria-label="Start Menu" id="startBtn" aria-expanded="false" aria-controls="startMenu">
-        <img class="dock-icon home-icon" src="home-icon.png" alt="" aria-hidden="true" />
-        <div class="active_line"></div>
+      <button class="dock-button" type="button" id="startBtn" aria-label="Start Menu" aria-expanded="false" aria-controls="startMenu">
+        <img class="dock-icon dock-icon--home" src="/assets/icons/home.png" alt="" aria-hidden="true" />
+        <span class="dock-indicator dock-indicator--home" aria-hidden="true"></span>
       </button>
 
-      <button class="debian-shortcut" type="button" aria-label="Debian">
-        <img class="debian-stroke" src="debian-stroke.png" alt="" aria-hidden="true" />
-        <div class="debian-active-line"></div>
+      <button class="dock-button" type="button" aria-label="Debian">
+        <img class="dock-icon dock-icon--debian" src="/assets/icons/debian.png" alt="" aria-hidden="true" />
+        <span class="dock-indicator dock-indicator--debian" aria-hidden="true"></span>
       </button>
-
-    </div>
+    </nav>
 
     <section class="start-menu hidden" id="startMenu" aria-label="Floating start menu dashboard">
       <div class="search-bar">
-        <div class="search-bar-inner">
-          <div class="search-icon" aria-hidden="true">
+        <label class="search-field">
+          <span class="search-icon" aria-hidden="true">
             <svg viewBox="0 0 14 14" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="5.5" cy="5.5" r="4"/>
-              <line x1="8.5" y1="8.5" x2="12" y2="12"/>
+              <circle cx="5.5" cy="5.5" r="4" />
+              <line x1="8.5" y1="8.5" x2="12" y2="12" />
             </svg>
-          </div>
-          <input type="text" placeholder="Search for wot?" />
-        </div>
+          </span>
+          <span class="sr-only">Search</span>
+          <input type="text" placeholder="Search for wot?" autocomplete="off" />
+        </label>
       </div>
 
-      <div class="content">
+      <div class="menu-content">
         <div class="pinned-header">
           <strong>Pinned</strong>
-          <span class="show-all">Show all apps →</span>
+          <span>Show all apps →</span>
         </div>
+
         <div class="apps-grid" id="appsGrid"></div>
       </div>
 
-      <footer class="footer">
-        <div class="user">
-          <div class="user-avatar">🪳</div>
-          <div class="user-text">
-            <strong>eh dude</strong><br />
+      <footer class="menu-footer">
+        <div class="user-card">
+          <div class="user-avatar" aria-hidden="true">🪳</div>
+          <div class="user-copy">
+            <strong>eh dude</strong>
             <small>guns.lol/ehdude</small>
           </div>
         </div>
+
         <a class="ping-link" href="https://ping.ehdude.com" aria-label="Open ping">
-          <div class="power-btn" aria-hidden="true">🎔</div>
+          <span aria-hidden="true">🎔</span>
         </a>
       </footer>
     </section>
@@ -84,6 +89,6 @@
     </aside>
   </main>
 
-  <script type="module" src="js/dashboard.js"></script>
+  <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
